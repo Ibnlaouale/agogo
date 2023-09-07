@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Agogo</title>
+</head>
+<body>
+      <nav class="navbar navbar-expand  fixed-top">
+        <!-- <a class="navbar-brand" href="#"></a> -->
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+          <ul class="d-flex justify-content-evenly mb-0">
+            <li><button id="boutC20" class="border-0 text-light">20 SECS</button></li>
+            <li><button id="boutC5" class="border-0 text-light">CAPPUCINO 5</button></li>
+            <li><button id="bout15" class="border-0 text-light">THE 15</button></li>
+            <li><button id="btnPD" class="border-0 text-light">PETIT DEJEUNER 20</button></li>
+            <li><button id="boutCD30" class="border-0 text-light">DEJEUNER 30</button></li>
+          </ul>
+        </div>
+      </nav>
+    
+      <div class="container-fluid">
+        <div class="container divInput">
+          <input id="enter" type="number" placeholder="  Enter time in minute" class="rounded-3" value="Enter">
+        </div>
+          <h1></h1>
+        <div id="divTimer" class="container d-flex hidden ">
+          <div id="countH">00<span>:</span></div>
+          <div id="countM">00<span>:</span></div>
+          <div id="countS">00</div>
+        </div>
+        <div id="comeBack" class="container hidden" for="">Be Back At:</div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
