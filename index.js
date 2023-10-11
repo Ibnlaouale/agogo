@@ -2,7 +2,7 @@ let boutC20 = document.querySelector('#boutC20');
 let boutC5 = document.querySelector('#boutC5');
 let divTimer = document.querySelector('#divTimer');
 let comeBack = document.querySelector('#comeBack');
-let date = new Date();
+
 let interval = null;
 
 
@@ -43,18 +43,16 @@ ul.addEventListener('click', (e) => { //ecouteur d'evènement sur chaque boutton
 
 /*------------------- la valeur `entrée` input  ---------------------*/
 
-let enter = document.querySelector('#enter');
+let input = document.querySelector('input');
 
 
-enter.addEventListener('keyup', (e) => {
+input.addEventListener('keyup', (e) => {
 
+  let t = e.target.value;
   if (e.key == 'Enter') {
-    let t = e.target.valueAsNumber;
-    if (t === NaN) {
-      alert('veuillez renseigner tous les champ');
-      return
-    }else
-    if (t < 0) {
+    if (t === '' || isNaN(e.target.valueAsNumber)) {
+      alert('veuillez  saisir une valeur numérique')
+    } else if (t < 0) {
       alert('la valeur saisie doit être positive');
       return;
     } else {
@@ -63,7 +61,7 @@ enter.addEventListener('keyup', (e) => {
       afficheChrono();
       showGoBack(t)
     }
-
+    input.value = '';
   }
 });
 
@@ -109,8 +107,28 @@ function timer(s) {
 }
 
 function showGoBack(t) {
-  let heure = Math.floor(t / 3600),
-    munite = Math.floor(t / 60) % 60,
-    seconde = t % 60;
-  comeBack.innerHTML = `Be Back At  ${heure < 10 ? '0' : ''}${date.getHours() + heure}:${date.getMinutes() + munite}:${date.getSeconds() + seconde}`;
+  let seconds = t % 60;
+  let minutes = Math.floor(t / 60) % 60;
+  let hours = Math.floor(t / 3600);
+
+  let date = new Date();
+  date.setHours(date.getHours() + hours);
+  date.setMinutes(date.getMinutes() + minutes);
+  date.setSeconds(date.getSeconds() + seconds);
+
+  // Si les secondes dépassent 60, réinitialiser et ajuster les minutes
+  if (date.getSeconds() >= 60) {
+    date.setMinutes(date.getMinutes() + 1);
+    date.setSeconds(date.getSeconds() - 60);
+  }
+
+  // Si les minutes dépassent 60, réinitialiser et ajuster les heures
+  if (date.getMinutes() >= 60) {
+    date.setHours(date.getHours() + 1);
+    date.setMinutes(date.getMinutes() - 60);
+  }
+
+  let rdv = `${date.getHours() < 10 ? '0' : ''}${date.getHours()}:${date.getMinutes() < 10 ? '0' : ''}${date.getMinutes()}:${date.getSeconds() < 10 ? '0' : ''}${date.getSeconds()}`;
+
+  comeBack.innerHTML = `Be Back At: ${rdv}`;
 }

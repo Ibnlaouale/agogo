@@ -2,7 +2,12 @@ body,
 button {
     background-color: #4bce97;
 }
-
+body{
+    height: 100vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
 ul {
     list-style: none;
 }
@@ -15,15 +20,14 @@ nav {
 .divInput {
     width: fit-content !important;
     /* border: 2px solid red; */
-    margin-top: 15rem;
 }
 
-#enter{
+input{
     margin-left: auto !important;
     margin-right: auto !important;
-    height: 40px;
-    /* width: 150%; */
+    height: 50px !important;
     border: none;
+    outline: none !important;
 }
 #divTimer{
     /* border: 1px solid blue; */
@@ -33,13 +37,7 @@ nav {
 .hidden{
     display: none !important;
 }
-#countH, #countM, #countS{
-    /* border: 1px solid red; */
-    width: fit-content;
-    color: white;
-    font-size: 70px;
-    font-weight: bold;
-}
+
 
 #comeBack{
     font-size: 30px;
